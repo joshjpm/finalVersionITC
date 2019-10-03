@@ -594,7 +594,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsE-fv-REI">
                                                     <rect key="frame" x="224" y="50" width="125" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Check In"/>
+                                                    <state key="normal" title="Clock In"/>
                                                     <connections>
                                                         <action selector="clockInButton:" destination="xAQ-Mr-byv" eventType="touchUpInside" id="Qp4-cj-Knm"/>
                                                     </connections>

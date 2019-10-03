@@ -275,8 +275,8 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             cell.id.text = device.id
             cell.name.text = device.name
             cell.user.text = device.model
-            cell.clockin.isHidden = true
-            cell.clockout.isHidden = false
+            cell.clockin.isHidden = false
+            cell.clockout.isHidden = true
             cell.clockout.setTitle("Clock out", for: .normal)
             cell.index = indexPath
             cell.delegate = self
@@ -291,8 +291,8 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             cell.id.text = device.id
             cell.name.text = device.name
             cell.user.text = device.model
-            cell.clockin.isHidden = false
-            cell.clockout.isHidden = true
+            cell.clockin.isHidden = true
+            cell.clockout.isHidden = false
             cell.clockout.setTitle("Clock out", for: .normal)
             cell.index = indexPath
             cell.delegate = self
@@ -311,7 +311,7 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             cell.clockout.isHidden = false
             
             if username == "admin" {
-                cell.clockout.setTitle("Force clockout", for: .normal)
+                cell.clockout.setTitle("Force clock In", for: .normal)
             } else {
                 cell.clockout.setTitle("", for: .normal)
             }
