@@ -153,13 +153,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ubC-5N-ZQq">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ubC-5N-ZQq">
                                 <rect key="frame" x="144" y="623" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Admin :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-x0-vhx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Admin :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-x0-vhx">
                                 <rect key="frame" x="42" y="628" width="57.5" height="20.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -238,6 +236,10 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ubC-5N-ZQq" firstAttribute="leading" secondItem="Rnj-x0-vhx" secondAttribute="trailing" constant="50" id="8TK-g0-tos"/>
+                            <constraint firstItem="Rnj-x0-vhx" firstAttribute="leading" secondItem="YAM-3P-LDG" secondAttribute="leading" constant="75" id="ikn-WJ-QCj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YAM-3P-LDG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Users" image="user" id="qoO-5r-qD9"/>
@@ -324,9 +326,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xed-RS-whb">
+                                                    <rect key="frame" x="12" y="18" width="314" height="105"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="LogInDescription" destination="Xed-RS-whb" id="sIR-xu-0hE"/>
                                             <outlet property="clockIn" destination="AEh-x2-hir" id="Y4F-7X-aQc"/>
                                             <outlet property="clockout" destination="lag-ay-fAX" id="Fwf-SY-Iph"/>
                                             <outlet property="id" destination="0ED-eD-Um0" id="OgX-y0-Jto"/>
@@ -657,28 +667,9 @@
                                     <outlet property="delegate" destination="7dH-2U-BSb" id="Iu3-Sr-RW4"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFK-dS-WLg">
-                                <rect key="frame" x="35" y="103" width="61" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeS-14-4cV">
-                                <rect key="frame" x="344" y="98" width="55" height="30"/>
-                                <state key="normal" title="Log Out"/>
-                                <connections>
-                                    <action selector="logOutButtonTouch:" destination="7dH-2U-BSb" eventType="touchUpInside" id="9V9-FV-yrb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tB-aN-OBX">
-                                <rect key="frame" x="121" y="98" width="79" height="30"/>
-                                <state key="normal" title="Add Device"/>
-                                <connections>
-                                    <action selector="addDevice:" destination="7dH-2U-BSb" eventType="touchUpInside" id="zy5-TG-rvP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKt-MW-MaJ">
-                                <rect key="frame" x="266" y="98" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKt-MW-MaJ">
+                                <rect key="frame" x="341" y="99" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Refresh"/>
                                 <connections>
                                     <action selector="refreshButtonTouch:" destination="7dH-2U-BSb" eventType="touchUpInside" id="z3P-2h-cuk"/>
@@ -705,18 +696,16 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tB-aN-OBX">
+                                <rect key="frame" x="241" y="98" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Device"/>
+                                <connections>
+                                    <action selector="addDevice:" destination="7dH-2U-BSb" eventType="touchUpInside" id="zy5-TG-rvP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="bKt-MW-MaJ" firstAttribute="top" secondItem="Qmb-gd-5rm" secondAttribute="top" constant="10" id="0Gf-5y-Csl"/>
-                            <constraint firstItem="xFK-dS-WLg" firstAttribute="top" secondItem="Qmb-gd-5rm" secondAttribute="top" constant="15" id="1T6-Vk-mj3"/>
-                            <constraint firstItem="Qmb-gd-5rm" firstAttribute="trailing" secondItem="yeS-14-4cV" secondAttribute="trailing" constant="15" id="5Ku-1R-P3Y"/>
-                            <constraint firstItem="xFK-dS-WLg" firstAttribute="leading" secondItem="Qmb-gd-5rm" secondAttribute="leading" constant="35" id="6LB-LP-25v"/>
-                            <constraint firstItem="2tB-aN-OBX" firstAttribute="leading" secondItem="xFK-dS-WLg" secondAttribute="trailing" constant="25" id="C7s-PB-cvz"/>
-                            <constraint firstItem="yeS-14-4cV" firstAttribute="leading" secondItem="bKt-MW-MaJ" secondAttribute="trailing" constant="25" id="EBv-Cl-0AQ"/>
-                            <constraint firstItem="yeS-14-4cV" firstAttribute="top" secondItem="Qmb-gd-5rm" secondAttribute="top" constant="10" id="o0J-ho-Mit"/>
-                            <constraint firstItem="2tB-aN-OBX" firstAttribute="top" secondItem="Qmb-gd-5rm" secondAttribute="top" constant="10" id="z5g-6m-r2E"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Qmb-gd-5rm"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Devices" image="devices" id="Olg-Wo-5Hn"/>
@@ -876,7 +865,7 @@
             <objects>
                 <viewController id="FzW-XK-JRh" customClass="TermControllerViewController" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4jA-zO-S6H">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hv7-ZO-TPI">
@@ -966,7 +955,7 @@
         <image name="user" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tuA-bQ-wQ7"/>
+        <segue reference="Hos-SJ-Lds"/>
         <segue reference="Qc0-M2-q2x"/>
     </inferredMetricsTieBreakers>
 </document>

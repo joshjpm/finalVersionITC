@@ -511,8 +511,9 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
             let newlist = keylist.sorted{ $0 > $1 }
             let key = newlist[indexPath.row]
             let item = failedlog[key]
-            cell.id.text = item!["timestamp"]
-            cell.name.text = item!["message"]
+            cell.id.text = ""
+            cell.name.text = ""
+                cell.LogInDescription.text = item!["message"]
             cell.model.text = ""
             cell.clockIn.text = ""
             cell.clockout.text = ""
@@ -534,6 +535,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
             cell.clockout.text = "Clock out at \(list![3])"
             cell.usedby.isHidden = true
             cell.usedby.text = ""
+            cell.LogInDescription.text = ""
         }
         }
         else{
@@ -544,6 +546,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
                 list?.removeFirst(index)
                 let device = devicedocument[list![1]]
                 cell.id.text = device!.id
+                cell.LogInDescription.text = ""
                 cell.name.text = device!.name
                 cell.model.text = device!.model
                 cell.clockIn.text = "Clock in at \(list![2])"

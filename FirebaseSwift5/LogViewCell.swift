@@ -16,4 +16,6 @@ class LogViewCell: UICollectionViewCell {
     @IBOutlet weak var model: UILabel!
     @IBOutlet weak var clockIn: UILabel!
     @IBOutlet weak var clockout: UILabel!
+    @IBOutlet weak var LogInDescription: UILabel!
+    
 }
