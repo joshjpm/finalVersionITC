@@ -13,7 +13,8 @@ import FirebaseAuth
 var vSpinner : UIView?
 class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
    
-    
+    // MARK: - Initial Declerations
+
     @IBOutlet weak var myview: UICollectionView!
     var db : Firestore!
     var ref: DatabaseReference!
@@ -43,14 +44,10 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     var counter = 0
     
     
+    // MARK: - View Configuration
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if username != "admin" {
-//            scsegment.setEnabled(false, forSegmentAt: 1)
-//            scsegment.setEnabled(false, forSegmentAt: 2)
-//        }
-        
         self.formatday.dateFormat = "dd-MM-yyyy"
         self.formatdate.dateFormat = "yyyy-MM-dd HH:mm:ss"
         self.formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -60,6 +57,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         db = Firestore.firestore()
         db.collection("Devices").getDocuments(){
         querySnapshot, error in
+            
         if let error = error{
             print("\(error.localizedDescription)")
         }else{
@@ -74,8 +72,6 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
                 if document!.data() != nil{
                     
                     self.devicedocument[x] = Device(dictionary: document!.data()!)
-                    
-                    
                 }
                 }
                 
@@ -83,9 +79,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
             
             }
         }
-        
         ref = Database.database().reference()
-        print("hi")
         if Auth.auth().currentUser != nil {
             let user = Auth.auth().currentUser
             if let user = user {
@@ -125,7 +119,8 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     }
     
     
-    
+    // MARK: - User Handeling
+
     override func viewDidAppear(_ animated: Bool) {
         // load pdf into webView
         self.tabBarController?.navigationItem.title = "Log"
@@ -148,7 +143,6 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         
     }
     
-    ///**************** sort the date in descending order ***************///
     func sortdate(x:[String])->[String]{
          var convertedArray: [Date] = []
          let dateFormatter = DateFormatter()
@@ -174,12 +168,9 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
          return sorted_date
 
     }
-    ///**************** sort the date in descending order ***************///
     
+    // MARK: - Log Configuration
 
-
-    ///****************************get mylog device details *********************/////
-    
     func loadalllog(){
          self.showSpinner(onView: self.view)
         self.myview.isHidden = true
@@ -263,8 +254,8 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         }
     }
 
-    ///****************************get all log device details *********************/////
-    ///****************************get mylog device details *********************/////
+        // MARK: - log request functions
+
     func loadData(){
         getlog()
         self.showSpinner(onView: self.view)
@@ -398,9 +389,6 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         }
     }
 
-    ///****************************get mylog device details *********************/////
-    
-    //***************************get login log ***********************///
     func getlog(){
         var fkeylist = [String]()
         var skeylist = [String]()
@@ -447,10 +435,8 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     }
     
     
-    //***************************get login log ***********************///
-    
+    // MARK: - Collection View Config
 
-    ///****************************display data in collection view*********************/////
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var resuable : UICollectionReusableView? = nil
         if (kind == UICollectionView.elementKindSectionHeader){
@@ -584,10 +570,9 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         
         return cell
        }
-    ///****************************display data in collection view*********************/////
     
-    
-///********************function call when the segment control is tapped*********************/////
+    // MARK: - Conllection View Interaction
+
     @IBAction func segmentgetTapped(_ sender: Any) {
         let getIndex = scsegment.selectedSegmentIndex
         
@@ -611,10 +596,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         default:
             print("hi")
         }
-    }
-
-///********************function call when the segment control is tapped*********************/////
-    
+    }    
     
 
 }

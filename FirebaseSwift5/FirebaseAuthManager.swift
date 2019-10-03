@@ -5,6 +5,8 @@
 //  Created by Joshua Mac Guinness on 31/8/19.
 //
 
+// MARK: - User Auth Managment
+
 import UIKit
 import Firebase
 

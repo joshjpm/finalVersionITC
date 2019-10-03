@@ -10,7 +10,8 @@ import UIKit
 
 class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-  
+  // MARK: - Initial Declerations 
+
     
     @IBOutlet weak var modalTitle: UILabel!
     @IBOutlet weak var id_field: UITextField!
@@ -27,7 +28,8 @@ class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerV
     var newcolor =  ""
     var edititem :Bool = false
     
-    
+    // MARK: - View Config
+
     override func viewDidLoad() {
         super.viewDidLoad()
         model_list = ["-----Please select a model-----","Iphone 6","Iphone 6 Plus","Iphone 6S","Iphone 6S Plus","Iphone SE","Iphone 7","Iphone 7 Plus","Iphone 8","Iphone 8 Plus","Iphone X","Iphone XS","Iphone XS Max","Iphone XR","Iphone X","Iphone 11","Iphone 11 Pro","Iphone 11 Pro Max","IPAD 4th generation", "IPAD 5th generation","IPAD 6th generation","IPAD MINI","IPAD PRO", "IPAD AIR"]
@@ -42,6 +44,9 @@ class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerV
         // Do any additional setup after loading the view.
     }
     
+    
+    // MARK: - User Handeling
+
     @IBAction func confirmIsPressed(_ sender: Any) {
         self.newid = id_field.text!
         self.newname = device_field.text!
@@ -52,7 +57,6 @@ class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerV
         
             NotificationCenter.default.post(name: .newDevice, object: self )
             dismiss (animated:true)
-            
         }
     }
     
@@ -60,6 +64,7 @@ class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerV
         dismiss(animated: true)
 
     }
+    
     func alertpopup(){
         
         let message = "Asterisk field cannot be blank. Please make sure you have fill in all the details"
@@ -67,6 +72,7 @@ class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerV
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertController, animated: true)
     }
+    
     func createtoolBar(){
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -82,6 +88,7 @@ class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerV
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -129,7 +136,6 @@ class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerV
         }
     }
     
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
@@ -142,14 +148,5 @@ class EditDeviceViewController: UIViewController, UITextFieldDelegate, UIPickerV
             createtoolBar()
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

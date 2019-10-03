@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+// MARK: - Initial Declerations
+
 class settingsVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordButton: UIButton!
@@ -21,7 +23,8 @@ class settingsVC: UIViewController {
         logOutButton.dropShadow(scale: true)
     }
     
-    
+    // MARK: - User Handeling
+
     @IBAction func logOutPress(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -34,26 +37,6 @@ class settingsVC: UIViewController {
         let initial = storyboard.instantiateInitialViewController()
         UIApplication.shared.keyWindow?.rootViewController = initial
     }
-    
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        // load pdf into webView
-        self.tabBarController?.navigationItem.title = "Settings"
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    
-    
     
     @IBAction func resetPasswordClicked(_ sender: Any) {
         let email = emailTextField.text!
@@ -70,5 +53,24 @@ class settingsVC: UIViewController {
             self.emailTextField.text = ""
         }
     }
+    
+    
+    // MARK: - View Config
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // load pdf into webView
+        self.tabBarController?.navigationItem.title = "Settings"
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
 
 }

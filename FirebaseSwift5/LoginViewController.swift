@@ -11,7 +11,9 @@ import Firebase
 import FirebaseFirestore
 
 extension UIView {
+    // MARK: - initial declerations
 
+    //used to create drop shadows on diffrent objects accross the application
 func dropShadow(scale: Bool = true) {
     layer.masksToBounds = false
     layer.shadowColor = UIColor.black.cgColor
@@ -26,7 +28,6 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var checkBoxSwitch: UISwitch!
     @IBOutlet weak var RememberSwitch: UISwitch!
     @IBOutlet weak var fieldView: UIView!
     @IBOutlet weak var fieldView2: UIView!
@@ -37,7 +38,8 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
     var number_of_logs = 0
     
     
-    
+    // MARK: - View Config
+
     override func viewDidLoad() {
         
         fieldView.dropShadow(scale: true)
@@ -45,7 +47,6 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         loginButton.dropShadow(scale: true)
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         db = Firestore.firestore()
         ref = Database.database().reference()
         password.delegate = self
@@ -53,21 +54,15 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         RememberSwitch.setOn(false, animated: false)
         
         ref.child("logs").child("number_of_logs").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
             self.number_of_logs = (snapshot.value as? Int)!
             self.loginButton.isEnabled = true
-
             
-            
-            
-            // ...
         }) { (error) in
             print(error.localizedDescription)
         }
         
-
-        
     }
+    
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
@@ -83,13 +78,14 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    
-    
+    // MARK: - Functions & User Input Handeling
+
     @IBAction func termsConditionsClick(_ sender: Any) {
         performSegue(withIdentifier: "showTC", sender: nil)
     }
@@ -164,20 +160,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         
         
     }
-//        Auth.auth().signIn(withEmail: email.text! , password: password.text!){
-//            (user, error) in
-//            if error != nil {
-//                print (error!)
-//            }else {
-//                print("Login successful")
-//                if self.RememberSwitch.isOn == false{
-//                    self.defaults.set(false, forKey: "RememberMe")
-//                }
-//                self.performSegue(withIdentifier: "goHome", sender: self)
-//
-//            }
-//        }
-//    }
+
     func add_number_of_logs(){
         self.number_of_logs += 1
         self.ref.child("logs/number_of_logs").setValue(self.number_of_logs)
@@ -195,18 +178,6 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         }
         self.add_number_of_logs()
     }
-//    @IBAction func switchChange(_ sender: Any) {
-//        if checkBoxSwitch.isOn {
-//            loginButton.isEnabled = true
-//            self.loginButton.backgroundColor = UIColor(red: 149/255, green: 252/255, blue: 189/255, alpha: 1)
-//            self.loginButton.setTitleColor(.white, for: .normal)
-//        }
-//        else {
-//            loginButton.isEnabled = false
-//            self.loginButton.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 0.5)
-//            self.loginButton.setTitleColor(.black, for: .normal)
-//        }
-//    }
     
     @IBAction func rememberChange(_ sender: Any) {
         if RememberSwitch.isOn{
