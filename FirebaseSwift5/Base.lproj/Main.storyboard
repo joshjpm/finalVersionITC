@@ -634,8 +634,10 @@
                                             <outlet property="clockOut" destination="FKa-06-mYD" id="7qE-Xi-KYD"/>
                                             <outlet property="clockin" destination="LsE-fv-REI" id="qGb-xN-mEM"/>
                                             <outlet property="clockout" destination="8sp-1r-a3v" id="bmZ-EG-0Y0"/>
+                                            <outlet property="editbutton" destination="STg-lh-tEe" id="RxA-3b-tVa"/>
                                             <outlet property="id" destination="z4q-Ux-ANz" id="69D-B2-2Sl"/>
                                             <outlet property="name" destination="yuJ-OV-6mL" id="Ona-fS-2hY"/>
+                                            <outlet property="removebutton" destination="S6U-cG-ija" id="zUf-og-VzN"/>
                                             <outlet property="user" destination="axj-iM-PVB" id="XXO-3K-PWI"/>
                                         </connections>
                                     </collectionViewCell>
@@ -708,6 +710,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Devices" image="devices" id="Olg-Wo-5Hn"/>
                     <connections>
+                        <outlet property="addbutton" destination="2tB-aN-OBX" id="r7s-gv-4ZP"/>
                         <outlet property="myview" destination="fqs-6k-GP4" id="IMz-Gl-CoW"/>
                         <segue destination="Mbt-ba-mIM" kind="presentation" identifier="goModal" modalPresentationStyle="overCurrentContext" id="Qc0-M2-q2x"/>
                         <segue destination="Mbt-ba-mIM" kind="presentation" identifier="goModal2" modalPresentationStyle="overCurrentContext" id="gmX-yN-aW9"/>

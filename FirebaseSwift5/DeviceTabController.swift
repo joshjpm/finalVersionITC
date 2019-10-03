@@ -40,12 +40,16 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
     var document_for_available = [String]()
     var document_for_other = [String]()
     var username : String = ""
+    var isAdmin : Bool = false
     let date = Date()
     let formatday = DateFormatter()
     let formatdate = DateFormatter()
     let formatter = DateFormatter()
     var dateList = [String]()
     var counter = 0
+    
+    @IBOutlet weak var addbutton: UIButton!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -67,6 +71,13 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
                         if document.data()["email"] as? String == user.email!{
                             
                             self.username = document.data()["username"] as! String
+                            self.isAdmin = document.data()["admin"] as! Bool
+                            if self.isAdmin{
+                                self.addbutton.isHidden = false
+                            }
+                            else{
+                                self.addbutton.isHidden = true
+                            }
                             self.loadData()
                             
 
@@ -275,7 +286,7 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             cell.id.text = device.id
             cell.name.text = device.name
             cell.user.text = device.checkin
-            cell.clockout.setTitle("Clock In", for: .normal)
+            cell.clockout.setTitle("Clock Out", for: .normal)
             cell.clockin.isHidden = true
             cell.clockout.isHidden = false
 //            cell.clockout.setTitle("Clock out", for: .normal)
@@ -283,6 +294,14 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             cell.delegate = self
             cell.clockIn.isHidden = true
             cell.clockOut.isHidden = true
+            if isAdmin {
+                cell.editbutton.isHidden = false
+                cell.removebutton.isHidden = false
+            }
+            else{
+                cell.editbutton.isHidden = true
+                cell.removebutton.isHidden = true
+            }
             
         }
             else if indexPath.section == 1{
@@ -292,15 +311,23 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             cell.id.text = device.id
             cell.name.text = device.name
             cell.user.text = device.model
-            cell.clockin.setTitle("Clock Out", for: .normal)
+            cell.clockin.setTitle("Clock In", for: .normal)
             cell.clockin.isHidden = false
             cell.clockout.isHidden = true
-            cell.clockout.setTitle("Clock out", for: .normal)
+            cell.clockout.setTitle("Clock Out", for: .normal)
             cell.index = indexPath
             cell.delegate = self
             cell.clockIn.isHidden = true
             cell.clockOut.isHidden = true
-                
+
+                if isAdmin {
+                    cell.editbutton.isHidden = false
+                    cell.removebutton.isHidden = false
+                }
+                else{
+                    cell.editbutton.isHidden = true
+                    cell.removebutton.isHidden = true
+                }
             }
         else if indexPath.section == 2{
             let device = arrayOther[indexPath.row]
@@ -308,14 +335,18 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
                         
             cell.id.text = device.id
             cell.name.text = device.name
-            cell.user.text = "Using By : \(device.usingBy)"
+            cell.user.text = "Using By : \(device.usingBy) from \(device.checkin)"
             cell.clockin.isHidden = true
             cell.clockout.isHidden = false
             
-            if username == "admin" {
-                cell.clockout.setTitle("Force Clock In", for: .normal)
+            if isAdmin {
+                cell.clockout.setTitle("Force Clock Out", for: .normal)
+                cell.editbutton.isHidden = false
+                cell.removebutton.isHidden = false
             } else {
-                cell.clockout.setTitle("", for: .normal)
+                cell.clockout.isHidden = true
+                cell.editbutton.isHidden = true
+                cell.removebutton.isHidden = true
             }
             
             cell.index = indexPath

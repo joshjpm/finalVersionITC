@@ -22,9 +22,12 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var clockIn: UILabel!
     @IBOutlet weak var clockOut: UILabel!
     
+    @IBOutlet weak var editbutton: UIButton!
+    @IBOutlet weak var removebutton: UIButton!
     @IBOutlet weak var clockin: UIButton!
     
     @IBOutlet weak var clockout: UIButton!
+    
     var delegate: DataCollectionProtocol?
     var index: IndexPath?
     
