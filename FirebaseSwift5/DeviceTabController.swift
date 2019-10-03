@@ -275,9 +275,10 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             cell.id.text = device.id
             cell.name.text = device.name
             cell.user.text = device.model
+            cell.clockout.setTitle("Clock In", for: .normal)
             cell.clockin.isHidden = true
             cell.clockout.isHidden = false
-            cell.clockout.setTitle("Clock out", for: .normal)
+//            cell.clockout.setTitle("Clock out", for: .normal)
             cell.index = indexPath
             cell.delegate = self
             cell.clockIn.isHidden = true
@@ -291,6 +292,7 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             cell.id.text = device.id
             cell.name.text = device.name
             cell.user.text = device.model
+            cell.clockin.setTitle("Clock Out", for: .normal)
             cell.clockin.isHidden = false
             cell.clockout.isHidden = true
             cell.clockout.setTitle("Clock out", for: .normal)
