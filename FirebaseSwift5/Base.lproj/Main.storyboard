@@ -12,7 +12,7 @@
         <!--LoginViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="LoginViewController" customClass="LoginViewController" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="LoginViewController" customClass="LoginViewController" customModule="ITC_Device_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +148,7 @@
         <!--Users-->
         <scene sceneID="HqZ-dX-WX9">
             <objects>
-                <viewController id="gxy-el-h4u" customClass="NewUserVC" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gxy-el-h4u" customClass="NewUserVC" customModule="ITC_Device_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t8i-aG-Ui0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,7 @@
         <!--Log-->
         <scene sceneID="Bar-qk-FEb">
             <objects>
-                <viewController id="gtr-hZ-VgU" customClass="LogVC" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gtr-hZ-VgU" customClass="LogVC" customModule="ITC_Device_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fm5-do-7Uy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,7 +275,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Lqa-v4-rHN" customClass="LogViewCell" customModule="FirebaseSwift5" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Lqa-v4-rHN" customClass="LogViewCell" customModule="ITC_Device_Manager" customModuleProvider="target">
                                         <rect key="frame" x="32.5" y="50" width="349" height="131"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4Bs-jl-b9s">
@@ -344,7 +344,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ReuseView" id="Uth-vN-6KN" customClass="ReusableView" customModule="FirebaseSwift5" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ReuseView" id="Uth-vN-6KN" customClass="ReusableView" customModule="ITC_Device_Manager" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -418,7 +418,7 @@
         <!--Settings-->
         <scene sceneID="n4X-EW-K6o">
             <objects>
-                <viewController id="fyH-4c-LA7" customClass="settingsVC" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fyH-4c-LA7" customClass="settingsVC" customModule="ITC_Device_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xmi-XH-QX8" customClass="Set">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -523,7 +523,7 @@
         <!--Devices-->
         <scene sceneID="Lyd-l5-j9H">
             <objects>
-                <viewController id="7dH-2U-BSb" customClass="DeviceTabController" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7dH-2U-BSb" customClass="DeviceTabController" customModule="ITC_Device_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qJS-xK-8ui">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -539,7 +539,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="xAQ-Mr-byv" userLabel="I" customClass="CollectionViewCell" customModule="FirebaseSwift5" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="xAQ-Mr-byv" userLabel="I" customClass="CollectionViewCell" customModule="ITC_Device_Manager" customModuleProvider="target">
                                         <rect key="frame" x="32.5" y="50" width="349" height="131"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -640,7 +640,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ReusableView" id="E4h-8S-k4O" customClass="ReusableView" customModule="FirebaseSwift5" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ReusableView" id="E4h-8S-k4O" customClass="ReusableView" customModule="ITC_Device_Manager" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -720,7 +720,7 @@
         <!--Edit Device View Controller-->
         <scene sceneID="Msm-hb-AzP">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="Mbt-ba-mIM" customClass="EditDeviceViewController" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="Mbt-ba-mIM" customClass="EditDeviceViewController" customModule="ITC_Device_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M7z-12-XW2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -861,13 +861,13 @@
         <!--Term & Condition-->
         <scene sceneID="bxe-U6-5td">
             <objects>
-                <viewController id="FzW-XK-JRh" customClass="TermControllerViewController" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FzW-XK-JRh" customClass="TermControllerViewController" customModule="ITC_Device_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4jA-zO-S6H">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hv7-ZO-TPI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -896,7 +896,7 @@
         <!--HomeTabBarController-->
         <scene sceneID="PWT-qs-GFx">
             <objects>
-                <tabBarController id="8Lw-t2-SzH" userLabel="HomeTabBarController" customClass="TabViewController" customModule="FirebaseSwift5" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="8Lw-t2-SzH" userLabel="HomeTabBarController" customClass="TabViewController" customModule="ITC_Device_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7My-uL-Ixy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -944,7 +944,7 @@
         <image name="user" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hos-SJ-Lds"/>
+        <segue reference="tuA-bQ-wQ7"/>
         <segue reference="Qc0-M2-q2x"/>
     </inferredMetricsTieBreakers>
 </document>

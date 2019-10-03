@@ -32,6 +32,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     var document_list = [String]()
     var devicedocument = [String:Device]()
     var username : String = ""
+    var isAdmin : Bool = false
     var doingmylog : Bool = true
     var failedlog = [String:[String:String]]()
     var successlog = [String:[String:String]]()
@@ -99,6 +100,15 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
                         if document.data()["email"] as? String == user.email!{
                             
                             self.username = document.data()["username"] as! String
+                            self.isAdmin = document.data()["admin"] as! Bool
+                            if self.isAdmin{
+                            self.scsegment.setEnabled(true, forSegmentAt: 1)
+                            self.scsegment.setEnabled(true, forSegmentAt: 2)
+                            }
+                            else{
+                               self.scsegment.setEnabled(false, forSegmentAt: 1)
+                                self.scsegment.setEnabled(false, forSegmentAt: 2)
+                            }
                             self.loadData()
                             
 
@@ -511,6 +521,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
             let newlist = keylist.sorted{ $0 > $1 }
             let key = newlist[indexPath.row]
             let item = failedlog[key]
+            print(failedlog[key])
             cell.id.text = ""
             cell.name.text = ""
                 cell.LogInDescription.text = item!["message"]
@@ -545,10 +556,10 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
             if list != nil {
                 list?.removeFirst(index)
                 let device = devicedocument[list![1]]
-                cell.id.text = device!.id
+                cell.id.text = device?.id
                 cell.LogInDescription.text = ""
-                cell.name.text = device!.name
-                cell.model.text = device!.model
+                cell.name.text = device?.name
+                cell.model.text = device?.model
                 cell.clockIn.text = "Clock in at \(list![2])"
                 cell.clockout.text = "Clock out at \(list![3])"
                 cell.usedby.isHidden = false
