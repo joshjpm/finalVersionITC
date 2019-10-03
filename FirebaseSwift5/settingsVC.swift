@@ -11,9 +11,14 @@ import Firebase
 
 class settingsVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var fieldView3: UIView!
     
     override func viewDidLoad() {
-        
+        fieldView3.dropShadow(scale: true)
+        passwordButton.dropShadow(scale: true)
+        logOutButton.dropShadow(scale: true)
     }
     
     
@@ -52,7 +57,9 @@ class settingsVC: UIViewController {
             }
             let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertController, animated: true)        }
+            self.present(alertController, animated: true)
+            self.emailTextField.text = ""
+        }
     }
 
 }

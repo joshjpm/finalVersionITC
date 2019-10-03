@@ -11,6 +11,16 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
+extension UIView {
+
+func dropShadow1(scale: Bool = true) {
+    layer.masksToBounds = false
+    layer.shadowColor = UIColor.black.cgColor
+    layer.shadowOpacity = 0.125
+    layer.shadowOffset = CGSize.zero
+    layer.shadowRadius = 5
+    layer.cornerRadius = 7
+}}
 
 class NewUserVC: UIViewController,UITextFieldDelegate {
 
@@ -22,6 +32,13 @@ class NewUserVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var AdminSwitch: UISwitch!
     
+    @IBOutlet weak var fieldView: UIView!
+    @IBOutlet weak var fieldView2: UIView!
+    @IBOutlet weak var fieldView3: UIView!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    
+    
     var error_message1 : String = ""
     var error_message2 : String = ""
     var final_error_message : String = ""
@@ -31,7 +48,15 @@ class NewUserVC: UIViewController,UITextFieldDelegate {
     var testuseremail : String = ""
     var suitable_username : Bool = true
     var suitable_email : Bool = true
+    
+    
     override func viewDidLoad() {
+        
+        fieldView.dropShadow(scale: true)
+        fieldView2.dropShadow(scale: true)
+        fieldView3.dropShadow(scale: true)
+        loginButton.dropShadow(scale: true)
+        
         super.viewDidLoad()
         passwordTF.delegate = self 
         passwordTF.keyboardType = UIKeyboardType.numberPad
@@ -53,6 +78,8 @@ class NewUserVC: UIViewController,UITextFieldDelegate {
             }
         }
     }
+    
+    
     @IBAction func onSignUpTapped(_ sender: Any) {
         var admin_condition : Bool = false
         if suitable_email && suitable_username{

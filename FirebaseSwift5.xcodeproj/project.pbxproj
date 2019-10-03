@@ -57,7 +57,7 @@
 		0D2FD5D7DEA1201EB771F02C /* Pods-FirebaseSwift5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseSwift5.release.xcconfig"; path = "Target Support Files/Pods-FirebaseSwift5/Pods-FirebaseSwift5.release.xcconfig"; sourceTree = "<group>"; };
 		1811133B2317717B00D9BB6E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		1811133D2317A5A300D9BB6E /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
-		18358F5723139C4900972C54 /* FirebaseSwift5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseSwift5.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18358F5723139C4900972C54 /* ITC Device Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ITC Device Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18358F5A23139C4900972C54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18358F5C23139C4900972C54 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18358F5F23139C4900972C54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 		18358F5823139C4900972C54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18358F5723139C4900972C54 /* FirebaseSwift5.app */,
+				18358F5723139C4900972C54 /* ITC Device Manager.app */,
 				18358F6B23139C4A00972C54 /* FirebaseSwift5Tests.xctest */,
 				18358F7623139C4A00972C54 /* FirebaseSwift5UITests.xctest */,
 			);
@@ -235,7 +235,7 @@
 			);
 			name = FirebaseSwift5;
 			productName = FirebaseSwift5;
-			productReference = 18358F5723139C4900972C54 /* FirebaseSwift5.app */;
+			productReference = 18358F5723139C4900972C54 /* ITC Device Manager.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18358F6A23139C4A00972C54 /* FirebaseSwift5Tests */ = {
@@ -638,7 +638,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.william.FirebaseSwift5;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "ITC Device Manager";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -656,7 +656,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.william.FirebaseSwift5;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "ITC Device Manager";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

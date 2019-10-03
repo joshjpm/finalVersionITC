@@ -40,8 +40,15 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     
     @IBOutlet weak var scsegment: UISegmentedControl!
     var counter = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        if username != "admin" {
+//            scsegment.setEnabled(false, forSegmentAt: 1)
+//            scsegment.setEnabled(false, forSegmentAt: 2)
+//        }
         
         self.formatday.dateFormat = "dd-MM-yyyy"
         self.formatdate.dateFormat = "yyyy-MM-dd HH:mm:ss"

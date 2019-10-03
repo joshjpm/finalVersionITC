@@ -203,11 +203,17 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         if counter == 1{
             loadData()
         }
+        
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     @IBAction func refreshButtonTouch(_ sender: Any) {
         loadData()
@@ -282,32 +288,38 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
                 let device = arrayAvailable[indexPath.row]
                             
                             
-                            cell.id.text = device.id
-                            cell.name.text = device.name
-                            cell.user.text = device.model
-                            cell.clockin.isHidden = false
-                            cell.clockout.isHidden = true
-                            cell.clockout.setTitle("Clock out", for: .normal)
-                            cell.index = indexPath
-                            cell.delegate = self
-                            cell.clockIn.isHidden = true
-                            cell.clockOut.isHidden = true
+            cell.id.text = device.id
+            cell.name.text = device.name
+            cell.user.text = device.model
+            cell.clockin.isHidden = false
+            cell.clockout.isHidden = true
+            cell.clockout.setTitle("Clock out", for: .normal)
+            cell.index = indexPath
+            cell.delegate = self
+            cell.clockIn.isHidden = true
+            cell.clockOut.isHidden = true
                 
             }
         else if indexPath.section == 2{
             let device = arrayOther[indexPath.row]
                         
                         
-                        cell.id.text = device.id
-                        cell.name.text = device.name
-                        cell.user.text = "Using By : \(device.usingBy)"
-                        cell.clockin.isHidden = true
-                        cell.clockout.isHidden = false
-                        cell.clockout.setTitle("Force clockout", for: .normal)
-                        cell.index = indexPath
-                        cell.delegate = self
-                        cell.clockIn.isHidden = true
-                        cell.clockOut.isHidden = true
+            cell.id.text = device.id
+            cell.name.text = device.name
+            cell.user.text = "Using By : \(device.usingBy)"
+            cell.clockin.isHidden = true
+            cell.clockout.isHidden = false
+            
+            if username == "admin" {
+                cell.clockout.setTitle("Force clockout", for: .normal)
+            } else {
+                cell.clockout.setTitle("", for: .normal)
+            }
+            
+            cell.index = indexPath
+            cell.delegate = self
+            cell.clockIn.isHidden = true
+            cell.clockOut.isHidden = true
         }
         
         
@@ -363,6 +375,8 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goModal"{
