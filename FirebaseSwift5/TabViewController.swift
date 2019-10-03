@@ -17,7 +17,6 @@ let uid = ""
         db = Firestore.firestore()
         self.navigationItem.setHidesBackButton(true, animated: false)
         
-        // Do any additional setup after loading the view.
         
         
         // MARK: - User Privilages
@@ -49,30 +48,11 @@ let uid = ""
             
     }
             }
-//            if uid == "51IB2nwlWUVjuFBeqUlIRKngdKk1" {
-//                        print("I am the admin")
-//
-//
-//                    } else {
-//                        print("im not the admin")
-//                        let index1 = 1 //0 to 5
-//                        viewControllers?.remove(at: index1)
-//                    }
+
         }
         
     }
     
-    
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

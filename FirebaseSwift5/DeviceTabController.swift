@@ -13,15 +13,8 @@ import FirebaseAuth
 
 class DeviceTabController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
-//    var id_list = [String]()
-//    var name_list = [String]()
-//    var user_list = [String]()
-    
-//    var refresh = 1
-//    //sample data
-//    var id_list = ["1","2","3","1","2","3","1","2","3"]
-//    var name_list = ["dog","cat","cow","1","2","3","1","2","3"]
-//    var user_list = ["richard", "john", "Ian","1","2","3","1","2","3"]
+    // MARK: - Initial Decleration
+
     
     @IBOutlet weak var myview: UICollectionView!
     var db : Firestore!
@@ -98,16 +91,16 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             self.loadData()
             print("Screen refreshed")
         }
-        
-        // Do any additional setup after loading the view.
     }
+    
     func loadData(){
         getlogdevice()
         getdevicelist()
         
     }
     
-   
+   // MARK: - Pull active device
+
     
     func getdevicelist(){
         db.collection("Devices").getDocuments(){
@@ -171,6 +164,8 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
      
+    // MARK: - Data Formating
+
     func getlogdevice(){
     
     self.formatday.dateFormat = "dd-MM-yyyy"
@@ -206,7 +201,8 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
    
     
    
-    
+    // MARK: - View Config
+
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Devices"
         
@@ -257,7 +253,8 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
 
         
         
-    
+    // MARK: - Collection View Config
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var resuable : UICollectionReusableView? = nil
         if (kind == UICollectionView.elementKindSectionHeader){
@@ -358,20 +355,6 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
         
         // MARK: - Cell Styling
         
-        //if want image "cell.xx.image = xx[indexPath.row]
-//        cell.contentView.layer.cornerRadius = 10
-//        cell.contentView.layer.borderWidth = 1.0
-//        cell.contentView.layer.borderColor = UIColor.clear.cgColor
-//        cell.contentView.layer.masksToBounds = false
-//        cell.layer.shadowColor = UIColor.gray.cgColor
-//        cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-//        cell.layer.shadowRadius = 4.0
-//        cell.layer.shadowOpacity = 1.0
-//        cell.layer.masksToBounds = false
-//        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
-        
-        
-        
         cell.contentView.backgroundColor = .white
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.masksToBounds = true
@@ -399,18 +382,6 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
         UIApplication.shared.keyWindow?.rootViewController = initial
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goModal"{
             let popup = segue.destination as! EditDeviceViewController
@@ -423,6 +394,8 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
 }
+
+// MARK: - data extensions
 
 extension DeviceTabController: DataCollectionProtocol{
     
@@ -503,6 +476,9 @@ extension DeviceTabController: DataCollectionProtocol{
         
 
     }
+    
+    // MARK: - Clock in and out
+
     func clockin(indx: Int, sec :Int) {
        let date = Date()
         let formatday = DateFormatter()

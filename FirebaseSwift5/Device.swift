@@ -12,6 +12,7 @@ import FirebaseFirestore
 protocol DocumentSerializable{
     init?(dictionary:[String:Any])
 }
+// MARK: - Initial Declerations
 
 struct Device {
     var id:String
@@ -38,6 +39,8 @@ struct Device {
         ]
     }
 }
+
+// MARK: - pick list definitions
 
 extension Device : DocumentSerializable{
     init?(dictionary:[String:Any]){

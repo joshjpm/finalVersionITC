@@ -16,6 +16,8 @@ protocol DataCollectionProtocol{
 }
 class CollectionViewCell: UICollectionViewCell {
 
+    // MARK: - Initial Definitions
+
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var user: UILabel!
@@ -31,6 +33,8 @@ class CollectionViewCell: UICollectionViewCell {
     var delegate: DataCollectionProtocol?
     var index: IndexPath?
     
+    // MARK: - Cell Config
+
     @IBAction func deleteButton(_ sender: Any) {
         delegate?.deleteData(indx: (index?.row)!, sec: (index?.section)!)
     }

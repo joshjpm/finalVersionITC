@@ -11,6 +11,8 @@ import WebKit
 import FirebaseAuth
 class TermControllerViewController: UIViewController {
 
+    // MARK: - configuration of PDF View
+    
     @IBOutlet weak var webview: WKWebView!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,18 +30,6 @@ class TermControllerViewController: UIViewController {
 
     }
     
-    
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     
     @IBAction func logOutPress(_ sender: Any) {
