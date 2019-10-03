@@ -153,11 +153,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ubC-5N-ZQq">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ubC-5N-ZQq">
                                 <rect key="frame" x="144" y="623" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Admin :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-x0-vhx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Admin :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-x0-vhx">
                                 <rect key="frame" x="42" y="628" width="57.5" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -236,10 +238,6 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ubC-5N-ZQq" firstAttribute="leading" secondItem="Rnj-x0-vhx" secondAttribute="trailing" constant="50" id="8TK-g0-tos"/>
-                            <constraint firstItem="Rnj-x0-vhx" firstAttribute="leading" secondItem="YAM-3P-LDG" secondAttribute="leading" constant="75" id="ikn-WJ-QCj"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YAM-3P-LDG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Users" image="user" id="qoO-5r-qD9"/>
@@ -869,26 +867,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hv7-ZO-TPI">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1H5-FH-XHB">
-                                <rect key="frame" x="339" y="24" width="55" height="30"/>
-                                <state key="normal" title="Log Out"/>
-                                <connections>
-                                    <action selector="logOutPress:" destination="FzW-XK-JRh" eventType="touchUpInside" id="Ff1-j6-8ba"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1H5-FH-XHB" firstAttribute="top" secondItem="Iy8-t5-ZLl" secondAttribute="top" constant="24" id="NAM-0c-I9A"/>
                             <constraint firstItem="hv7-ZO-TPI" firstAttribute="leading" secondItem="Iy8-t5-ZLl" secondAttribute="leading" id="OQT-TE-4bU"/>
-                            <constraint firstItem="Iy8-t5-ZLl" firstAttribute="trailing" secondItem="1H5-FH-XHB" secondAttribute="trailing" constant="20" id="Oec-0f-gsS"/>
                             <constraint firstItem="hv7-ZO-TPI" firstAttribute="top" secondItem="Iy8-t5-ZLl" secondAttribute="top" id="STO-PU-e1Y"/>
                             <constraint firstItem="hv7-ZO-TPI" firstAttribute="bottom" secondItem="Iy8-t5-ZLl" secondAttribute="bottom" id="UkR-oc-CEL"/>
                             <constraint firstItem="hv7-ZO-TPI" firstAttribute="trailing" secondItem="Iy8-t5-ZLl" secondAttribute="trailing" id="bYn-bL-SeR"/>
