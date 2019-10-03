@@ -228,7 +228,7 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
             self.performSegue(withIdentifier: "goModal2", sender: self)
             observer = NotificationCenter.default.addObserver(forName: .newDevice, object: nil, queue: OperationQueue.main){ (notication) in
                let newdata = notication.object as! EditDeviceViewController
-                let newDevice = Device(id : newdata.newid, name: newdata.newname,model: newdata.newmodel,color: newdata.newcolor , timeStamp: Timestamp(),used: false, activatedBy: "", usingBy: "")
+                let newDevice = Device(id : newdata.newid, name: newdata.newname,model: newdata.newmodel,color: newdata.newcolor , timeStamp: Timestamp(),used: false, activatedBy: "", usingBy: "",checkin: "")
                 var ref:DocumentReference? = nil
 
                 ref = self.db.collection("Devices").addDocument(data: newDevice.dictionary){
@@ -274,7 +274,7 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
 
             cell.id.text = device.id
             cell.name.text = device.name
-            cell.user.text = device.model
+            cell.user.text = device.checkin
             cell.clockout.setTitle("Clock In", for: .normal)
             cell.clockin.isHidden = true
             cell.clockout.isHidden = false
@@ -477,7 +477,9 @@ extension DeviceTabController: DataCollectionProtocol{
         let formatday = DateFormatter()
         let formatdate = DateFormatter()
         let formatter = DateFormatter()
-
+        let formatter2 = DateFormatter()
+        
+        
         formatday.dateFormat = "dd-MM-yyyy"
         
         formatdate.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -486,6 +488,12 @@ extension DeviceTabController: DataCollectionProtocol{
         formatter.dateFormat = "h:mm a"
         formatter.amSymbol = "AM"
         formatter.pmSymbol = "PM"
+        formatter2.locale = Locale(identifier: "en_US_POSIX")
+        formatter2.dateFormat = "h:mm a 'on' MMMM dd, yyyy"
+        formatter2.amSymbol = "AM"
+        formatter2.pmSymbol = "PM"
+
+        let now2 = formatter2.string(from: Date())
         let today = formatday.string(from: date)
         let formattedDate = formatdate.string(from: date)
         let now = formatter.string(from: date)
@@ -495,6 +503,7 @@ extension DeviceTabController: DataCollectionProtocol{
             "used": true,
             "activatedBy": self.uid,
             "usingBy": self.username,
+            "checkin": now2,
 
         ]) { err in
             if let err = err {
@@ -581,6 +590,7 @@ extension DeviceTabController: DataCollectionProtocol{
                             "used": false,
                             "activatedBy": "",
                             "usingBy": "",
+                            "checkin":"",
 
                         ]) { err in
                             if let err = err {

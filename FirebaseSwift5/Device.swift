@@ -22,7 +22,9 @@ struct Device {
     var used:Bool
     var activatedBy: String
     var usingBy: String
-    var dictionary:[String:Any]{
+    var checkin: String
+    var dictionary:[String:Any]
+    {
         return [
             "id":id,
             "name":name,
@@ -31,7 +33,8 @@ struct Device {
             "timeStamp":timeStamp,
             "used":used,
             "activatedBy": activatedBy,
-            "usingBy": usingBy
+            "usingBy": usingBy,
+            "checkin": checkin
         ]
     }
 }
@@ -45,10 +48,11 @@ extension Device : DocumentSerializable{
             let timeStamp = dictionary["timeStamp"] as? Timestamp ,
             let used = dictionary["used"] as? Bool ,
             let activatedBy = dictionary["activatedBy"] as? String,
-            let usingBy = dictionary["usingBy"] as? String else {
+            let usingBy = dictionary["usingBy"] as? String,
+            let checkin = dictionary["checkin"] as? String else {
                 return nil
         }
-        self.init(id: id, name: name, model: model, color:color, timeStamp: timeStamp, used: used, activatedBy : activatedBy, usingBy:usingBy)
+        self.init(id: id, name: name, model: model, color:color, timeStamp: timeStamp, used: used, activatedBy : activatedBy, usingBy:usingBy, checkin:checkin)
     }
 }
 
