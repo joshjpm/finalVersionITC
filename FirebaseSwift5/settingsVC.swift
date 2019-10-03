@@ -39,6 +39,8 @@ class settingsVC: UIViewController {
     }
     
     
+    
+    
     @IBAction func resetPasswordClicked(_ sender: Any) {
         let email = emailTextField.text!
         Auth.auth().sendPasswordReset(withEmail: email) { error in

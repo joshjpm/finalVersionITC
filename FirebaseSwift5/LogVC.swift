@@ -114,13 +114,21 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         self.tabBarController?.navigationItem.title = "Log"
         scsegment.selectedSegmentIndex = 0
 
+        
+    }
+   
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         if counter == 1{
             loadData()
         }
+        
     }
     
     ///**************** sort the date in descending order ***************///
