@@ -39,6 +39,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     var successlog = [String:[String:String]]()
     var keylist = [String]()
     var showlog: Bool = false
+    var counter = 0
     
     @IBOutlet weak var scsegment: UISegmentedControl!
     
@@ -135,7 +136,9 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
+        if counter == 1 {
+            loadData()
+        }
         
     }
     
@@ -295,7 +298,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
             self.keylist.append(k)
             
             }
-        
+            self.counter = 1
         self.myview.reloadData()
        }
 
