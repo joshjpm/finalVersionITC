@@ -11,9 +11,9 @@ import Firebase
 import FirebaseFirestore
 
 extension UIView {
-    // MARK: - initial declerations
+    
+    // MARK: - Global Function Decleration
 
-    //used to create drop shadows on diffrent objects accross the application
 func dropShadow(scale: Bool = true) {
     layer.masksToBounds = false
     layer.shadowColor = UIColor.black.cgColor
@@ -22,12 +22,14 @@ func dropShadow(scale: Bool = true) {
     layer.shadowRadius = 5
     layer.cornerRadius = 7
 }}
+// MARK: - Initial Decleration
 
 class LoginViewController: UIViewController , UITextFieldDelegate{
     let defaults = UserDefaults.standard
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var checkBoxSwitch: UISwitch!
     @IBOutlet weak var RememberSwitch: UISwitch!
     @IBOutlet weak var fieldView: UIView!
     @IBOutlet weak var fieldView2: UIView!
@@ -47,6 +49,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         loginButton.dropShadow(scale: true)
         
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
         db = Firestore.firestore()
         ref = Database.database().reference()
         password.delegate = self
@@ -54,15 +57,16 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         RememberSwitch.setOn(false, animated: false)
         
         ref.child("logs").child("number_of_logs").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
             self.number_of_logs = (snapshot.value as? Int)!
             self.loginButton.isEnabled = true
+
             
         }) { (error) in
             print(error.localizedDescription)
         }
         
     }
-    
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
@@ -78,14 +82,14 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    // MARK: - Functions & User Input Handeling
-
+    
+    // MARK: - User Input Handle
+    
     @IBAction func termsConditionsClick(_ sender: Any) {
         performSegue(withIdentifier: "showTC", sender: nil)
     }
@@ -128,7 +132,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
                                 
                             }else {
                                 print ("Login successfully")
-                                self.save_logs(condition: "successful")
+                                self.save_logs(condition: "pass")
                                 if self.RememberSwitch.isOn == false{
                                     self.defaults.set(false, forKey: "RememberMe")
                                 }
@@ -160,16 +164,18 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         
         
     }
-
+    
+    // MARK: - Log Managment
+    
     func add_number_of_logs(){
         self.number_of_logs += 1
         self.ref.child("logs/number_of_logs").setValue(self.number_of_logs)
     }
     
     func save_logs(condition : String){
-        if condition == "successful"{
-        self.ref.child("logs/login_attempts/successful/\(self.number_of_logs)/message").setValue( "\(self.email.text!) is successfully login at \(Date())")
-        self.ref.child("logs/login_attempts/successful/\(self.number_of_logs)/timestamp").setValue( "\(Timestamp())")
+        if condition == "pass"{
+        self.ref.child("logs/login_attempts/pass/\(self.number_of_logs)/message").setValue( "\(self.email.text!) is successfully login at \(Date())")
+        self.ref.child("logs/login_attempts/pass/\(self.number_of_logs)/timestamp").setValue( "\(Timestamp())")
         }
         else {
             
@@ -178,6 +184,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         }
         self.add_number_of_logs()
     }
+    
     
     @IBAction func rememberChange(_ sender: Any) {
         if RememberSwitch.isOn{

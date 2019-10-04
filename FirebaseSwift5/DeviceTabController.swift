@@ -43,6 +43,8 @@ class DeviceTabController: UIViewController, UICollectionViewDataSource, UIColle
     
     @IBOutlet weak var addbutton: UIButton!
     
+    // MARK: - View Confi=g
+
     override func viewDidLoad() {
         
         super.viewDidLoad()

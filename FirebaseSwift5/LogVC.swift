@@ -13,7 +13,7 @@ import FirebaseAuth
 var vSpinner : UIView?
 class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
    
-    // MARK: - Initial Declerations
+    // MARK: - Initial Decleration
 
     @IBOutlet weak var myview: UICollectionView!
     var db : Firestore!
@@ -41,13 +41,13 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     var showlog: Bool = false
     
     @IBOutlet weak var scsegment: UISegmentedControl!
-    var counter = 0
     
     
-    // MARK: - View Configuration
+    // MARK: - View Config
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.formatday.dateFormat = "dd-MM-yyyy"
         self.formatdate.dateFormat = "yyyy-MM-dd HH:mm:ss"
         self.formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -57,7 +57,6 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         db = Firestore.firestore()
         db.collection("Devices").getDocuments(){
         querySnapshot, error in
-            
         if let error = error{
             print("\(error.localizedDescription)")
         }else{
@@ -72,14 +71,16 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
                 if document!.data() != nil{
                     
                     self.devicedocument[x] = Device(dictionary: document!.data()!)
+                    
                 }
                 }
-                
             }
             
             }
         }
+        
         ref = Database.database().reference()
+        print("hi")
         if Auth.auth().currentUser != nil {
             let user = Auth.auth().currentUser
             if let user = user {
@@ -114,17 +115,14 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         }
         }
 
-        
-        
     }
     
     
-    // MARK: - User Handeling
-
+    
     override func viewDidAppear(_ animated: Bool) {
         // load pdf into webView
         self.tabBarController?.navigationItem.title = "Log"
-        scsegment.selectedSegmentIndex = 0
+        
 
         
     }
@@ -137,12 +135,11 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        if counter == 1{
-            loadData()
-        }
+        
         
     }
     
+    // MARK: - Data Formating
     func sortdate(x:[String])->[String]{
          var convertedArray: [Date] = []
          let dateFormatter = DateFormatter()
@@ -169,8 +166,9 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
 
     }
     
-    // MARK: - Log Configuration
+    // MARK: - Request log
 
+    
     func loadalllog(){
          self.showSpinner(onView: self.view)
         self.myview.isHidden = true
@@ -179,7 +177,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         self.logcelldevicenumber.removeAll()
         self.dateList.removeAll()
         self.logtotaldevice.removeAll()
-        
+        print(self.alllogdate)
         for date in self.alllogdate{
         self.ref.child("logs").child("mylog").child(date).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -253,8 +251,8 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
          
         }
     }
-
-        // MARK: - log request functions
+ 
+    // MARK: - DB Data Pull Request
 
     func loadData(){
         getlog()
@@ -283,16 +281,22 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         
         var timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false) {
            (_) in
-        self.counter = 1
+        
         self.removeSpinner()
             self.myview.isHidden = false
-        self.myview.reloadData()
+            
+
+        print(self.failedlog)
         self.failedlog.merge(self.successlog) {(_,new) in new}
+            print(self.successlog)
             
         for (k,v) in self.failedlog{
+            print(k)
             self.keylist.append(k)
+            
             }
         
+        self.myview.reloadData()
        }
 
     }
@@ -321,7 +325,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     
         var counter = 0
         for date in self.mylogdate{
-            print(self.mylogdate)
+            
             counter = counter + 1
             
         self.ref.child("logs").child("mylog").child(date).child(self.username).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -389,20 +393,22 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         }
     }
 
+    // MARK: - Log Functions
+
     func getlog(){
         var fkeylist = [String]()
         var skeylist = [String]()
         fkeylist.removeAll()
         skeylist.removeAll()
        
-        self.ref.child("logs").child("login_attempts").child("successful").observeSingleEvent(of: .value, with: {(snapshot) in
+        self.ref.child("logs").child("login_attempts").child("pass").observeSingleEvent(of: .value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
-            print(value)
+            
             if value != nil {
                 skeylist = value?.allKeys as! [String]
                 
                 for key in skeylist{
-        self.ref.child("logs").child("login_attempts").child("successful").child(key).observeSingleEvent(of: .value, with: {(snapshot) in
+        self.ref.child("logs").child("login_attempts").child("pass").child(key).observeSingleEvent(of: .value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             if value != nil{
                 self.successlog[key] = value! as! [String : String]
@@ -433,10 +439,9 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         
         
     }
-    
-    
     // MARK: - Collection View Config
 
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var resuable : UICollectionReusableView? = nil
         if (kind == UICollectionView.elementKindSectionHeader){
@@ -485,18 +490,27 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
     
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
     if showlog{
+        print(self.keylist)
         return self.keylist.count
     }
     else{
     if doingmylog{
         let item_number = totaldevice[mylogdate[section]]
-        
+        if item_number?.count != 0 && item_number != nil{
         return item_number!.count/4
+        }
+        else{
+            return 0
+        }
     }
     else{
         let item_number = logtotaldevice[alllogdate[section]]
-        
+        if item_number?.count != 0 && item_number != nil{
         return item_number!.count/5
+        }
+        else{
+            return 0
+        }
     }
        }
     }
@@ -507,7 +521,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
             let newlist = keylist.sorted{ $0 > $1 }
             let key = newlist[indexPath.row]
             let item = failedlog[key]
-            print(failedlog[key])
+            
             cell.id.text = ""
             cell.name.text = ""
                 cell.LogInDescription.text = item!["message"]
@@ -571,7 +585,7 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         return cell
        }
     
-    // MARK: - Conllection View Interaction
+    // MARK: - Cell interaction
 
     @IBAction func segmentgetTapped(_ sender: Any) {
         let getIndex = scsegment.selectedSegmentIndex
@@ -596,10 +610,14 @@ class LogVC: UIViewController,UICollectionViewDataSource, UICollectionViewDelega
         default:
             print("hi")
         }
-    }    
+    }
+
+    
     
 
 }
+
+// MARK: - Activity Monitoring
 
 extension UIViewController {
     func showSpinner(onView : UIView) {
